@@ -15,11 +15,12 @@ module.exports = function probeStream(stream) {
     proxy.on('error', reject);
     console.log("Parsing from Stream");
 
-    function nope(err) { console.log(err) }
+    function nope(err) { console.log(this) }
 
     function parserEnd() {
       proxy.unpipe(this);
       this.removeAllListeners();
+      console.log("Failed: ", cnt)
       cnt--;
       // if all parsers finished without success -> fail.
       if (!cnt) reject(new ProbeError('unrecognized file format', 'ECONTENT'));
