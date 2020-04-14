@@ -14,7 +14,7 @@ module.exports = function probeStream(stream) {
     stream.on('error', reject);
     proxy.on('error', reject);
 
-    function nope() {}
+    function nope(err) { console.log(err) }
 
     function parserEnd() {
       proxy.unpipe(this);
