@@ -13,6 +13,7 @@ module.exports = function probeStream(stream) {
   var result = new Promise(function (resolve, reject) {
     stream.on('error', reject);
     proxy.on('error', reject);
+    console.log("Parsing from Stream");
 
     function nope(err) { console.log(err) }
 
